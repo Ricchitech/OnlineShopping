@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 26, 2020 at 09:14 AM
+-- Generation Time: Apr 26, 2020 at 07:18 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -64,22 +64,24 @@ CREATE TABLE IF NOT EXISTS `brands` (
   `brand_id` int(100) NOT NULL AUTO_INCREMENT,
   `brand_title` text NOT NULL,
   PRIMARY KEY (`brand_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `brands`
 --
 
 INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
-(1, 'HP'),
-(2, 'Samsung'),
-(3, 'Apple'),
-(4, 'motorolla'),
-(5, 'LG'),
-(6, 'Cloth Brand'),
-(7, 'Redmi'),
-(8, 'Realme'),
-(9, 'Nokia');
+(1, 'Dell'),
+(2, 'Asus'),
+(3, 'MSI'),
+(4, 'HP'),
+(5, 'Lenovo'),
+(6, 'Microsoft'),
+(7, 'Omen'),
+(8, 'Legion'),
+(9, 'Alienware'),
+(10, 'MI'),
+(11, 'Cloths');
 
 -- --------------------------------------------------------
 
@@ -108,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `cat_id` int(100) NOT NULL AUTO_INCREMENT,
   `cat_title` text NOT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `categories`
@@ -239,17 +241,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `product_image` text NOT NULL,
   `product_keywords` text NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_title`, `product_price`, `product_desc`, `product_image`, `product_keywords`) VALUES
-(86, 3, 1, 'Hp Laptop', 19999, 'hg', '1587827959_product01.png', '4'),
-(87, 3, 2, 'samsungLaptop', 20999, 'laptop', '1587828972_product08.png', 'nice laptop'),
-(88, 1, 1, 'LG laptop', 25999, 'gf', '1587829048_product03.png', '1'),
-(90, 3, 6, 'Shirt', 499, 'shirt', '1587890615_dress_shirt_PNG.png', 'dr');
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -269,18 +261,6 @@ CREATE TABLE IF NOT EXISTS `user_info` (
   `address2` varchar(11) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user_info`
---
-
-INSERT INTO `user_info` (`user_id`, `first_name`, `last_name`, `email`, `password`, `mobile`, `address1`, `address2`) VALUES
-(26, 'suru', 'jain', 'suru@gmail.com', '0123456789', '9123456780', 'M Sathyavara, Hosakote', 'Bangalore'),
-(27, 'Adi', 'Nandi', 'adi154@gmail.com', '123456789', '8880642477', 'Bangalore', 'Devanahalli'),
-(28, 'bharath', 'Gowda', 'brg2289@gmail.com', '1234512345', '9876543210', 'dvh', 'dvh'),
-(29, 'Teju', 'mp', 'teju@gmail.com', '1234567789', '9988776655', 'Bangalore', 'India'),
-(30, 'Bharath', 'raj', 'brg226@gmail.com', '5432154321', '8880642477', 'Doddakurubarahalli', 'India'),
-(32, 'ricchi', 'Gowda', 'ricchi2289@gmail.com', '9087654321', '9087654321', 'Doddakurubarahalli', 'India');
 
 --
 -- Triggers `user_info`
