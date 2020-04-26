@@ -30,7 +30,6 @@ include "topheader.php";
                     <tbody>
                       <?php 
                         $result=mysqli_query($con,"select user_id, email, password from user_info")or die ("query 2 incorrect.......");
-
                         while(list($user_id,$user_name,$user_password)=
                         mysqli_fetch_array($result))
                         {

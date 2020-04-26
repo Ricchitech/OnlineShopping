@@ -16,17 +16,12 @@
   
 </head>
 
-<body class="dark-edition">
+<body class="dark-edition" >
   <div class="wrapper ">
-    <div class="sidebar" data-color="azure" data-background-color="black" data-image="./assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="orange" data-background-color="purple" data-image="./assets/img/sidebar-2.jpg">
       <!-- Read once
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
       Tip 2: you can also add an image using data-image tag  -->
-      <div class="logo">
-        <a href="index.php" class="simple-text logo-normal">
-          Online Shopping
-        </a>
-      </div>
       <div class="sidebar-wrapper ps-container ps-theme-default" data-ps-id="3a8db1f4-24d8-4dbf-85c9-4f5215c1b29a">
         <ul class="nav">
           <li class="nav-item active">
@@ -39,6 +34,24 @@
             <a class="nav-link" href="adduser.php">
               <i class="material-icons">person</i>
               <p>Add User</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="addbrand.php">
+              <i class="material-icons">add</i>
+              <p>Add Brands</p>
+            </a>
+          </li>
+    <!--      <li class="nav-item ">
+            <a class="nav-link" href="addcategory.php">
+              <i class="material-icons">category</i>
+              <p>Add Categories</p>
+            </a>
+          </li> -->
+          <li class="nav-item ">
+            <a class="nav-link" href="addproduct.php">
+              <i class="material-icons">add</i>
+              <p>Add Products</p>
             </a>
           </li>
           <li class="nav-item">
@@ -55,12 +68,7 @@
               <p>Orders</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="addproduct.php">
-              <i class="material-icons">add</i>
-              <p>Add Products</p>
-            </a>
-          </li>
+
           <li class="nav-item ">
             <a class="nav-link" href="manageuser.php">
               <i class="material-icons">edit_user</i>

@@ -8,7 +8,7 @@ if(isset($_POST['btn_save']))
 $product_name=$_POST['product_name'];
 $details=$_POST['details'];
 $price=$_POST['price'];
-$c_price=$_POST['c_price'];
+//$c_price=$_POST['c_price'];
 $product_type=$_POST['product_type'];
 $brand=$_POST['brand'];
 $tags=$_POST['tags'];
@@ -30,7 +30,7 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 //mysqli_query($con,"insert into products (product_cat, product_brand,product_title,product_price, product_desc, product_image,product_keywords) values ('$product_type','$brand','$product_name','$price','$details','$pic_name','$tags')") or die ("query incorrect");
 
 
-mysqli_query($con,"INSERT INTO products (product_id,`product_cat`, `product_brand`,`product_title`,product_price,`product_desc`, `product_image`,`product_keywords`) VALUES (NULL,'$product_type','$brand','$product_name','$price','$details','$pic_name','$tags')") or die ("query incorrect");
+mysqli_query($con,"INSERT INTO products (product_id,product_cat, product_brand,`product_title`,product_price,`product_desc`, `product_image`,`product_keywords`) VALUES (NULL,'$product_type','$brand','$product_name','$price','$details','$pic_name','$tags')") or die ("query incorrect");
 
  header("location: sumit_form.php?success=1");
 }
@@ -47,7 +47,7 @@ include "topheader.php";
           <div class="row">
           
                 
-         <div class="col-md-7">
+         <div class="col-md-5">
             <div class="card">
               <div class="card-header card-header-primary">
                 <h5 class="title">Add Product</h5>
@@ -56,7 +56,7 @@ include "topheader.php";
                 
                   <div class="row">
                     
-                    <div class="col-md-12">
+                    <div class="col-md-10">
                       <div class="form-group">
                         <label>Product Title</label>
                         <input type="text" id="product_name" required name="product_name" class="form-control">
@@ -68,40 +68,114 @@ include "topheader.php";
                         <input type="file" name="picture" required class="btn btn-fill btn-success" id="picture" >
                       </div>
                     </div>
-                     <div class="col-md-12">
+                     <div class="col-md-10">
                       <div class="form-group">
                         <label>Description</label>
                         <textarea rows="4" cols="80" id="details" required name="details" class="form-control"></textarea>
                       </div>
                     </div>
                   
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label>Pricing</label>
-                        <input type="text" id="price" name="price" required class="form-control" >
+                        <input type="number" id="price" name="price" required class="form-control" >
                       </div>
                     </div>
-                  </div>
-                 
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Product Category</label>
+                        <input type="number" id="product_type" style="width: 140px; " name="product_type" required class="form-control">
+                        
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="">Product Brand</label>
+                        <input type="number" id="brand" style="width: 140px; margin-top: 25px;" name="brand"  class="form-control">
+                      </div>
+                    </div>
+                     
                   
-                
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Product Keywords</label>
+                        <input type="text" id="tags" name="tags" required class="form-control" >
+                      </div>
+                    </div>
+
+                    <div class="card-footer">
+                  <button type="submit" id="btn_save" name="btn_save" required class="btn btn-fill btn-primary">Update Product</button>
               </div>
-              
+
+
+                  </div>
+              </div> 
             </div>
           </div>
+
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h5 class="title">Category List</h5>
+              </div>
+
+              <div class="card-body">
+                <div class="table-responsive ps">
+
+                <table class="table tablesorter table-hover" id="">
+                    <thead class=" text-primary">
+                      <tr><th>ID</th> <th>Category</th>
+                    </tr></thead>
+                    <tbody>
+                      <?php 
+                    $result=mysqli_query($con,"select cat_id , cat_title from Categories") or die ("Query 2 is inncorrect");
+                        while(list($cat_id,$cat_title) = mysqli_fetch_array($result)){
+                        echo "<tr><td>$cat_id</td><td>$cat_title</td>";
+                        }
+                       mysqli_close($con);
+                        ?>
+                    </tbody>
+                  </table>
+                  <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h5 class="title">Brand List</h5>
+              </div>
+
+              <div class="card-body">
+                <div class="table-responsive ps">
+
+                <table class="table tablesorter table-hover" id="">
+                    <thead class=" text-primary">
+                      <tr><th>ID</th> <th>Brand Name</th>
+                    </tr></thead>
+                    <tbody>
+                      <?php 
+                    $result=mysqli_query($con1,"select brand_id , brand_title from brands") or die ("Query 2 is inncorrect");
+                        while(list($brand_id,$brand_title) = mysqli_fetch_array($result)){
+                        echo "<tr><td>$brand_id</td><td>$brand_title</td></tr>";
+                        }
+                       mysqli_close($con1);
+                        ?>
+                    </tbody>
+                  </table>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+              </div>
+            </div>
+          </div>
+
+<!--
           <div class="col-md-5">
             <div class="card">
               <div class="card-header card-header-primary">
                 <h5 class="title">Categories</h5>
               </div>
-<style>
-  select{
-    background: transparent; float: right;  color: white; width: 240px;
-  }
-  option{
-    color:black;
-  }
-</style>
 
               <div class="card-body">
                   <div class="row">
@@ -109,41 +183,19 @@ include "topheader.php";
                       <div class="form-group">
                         <label>Product Category</label>
                         <input type="number" id="product_type" style="width: 140px; " name="product_type" placeholder="[1-7]" required class="form-control">
-                        <select aria-readonly="false">
-                          <option>View Option Here</option> 
-                          <option>1- Electronics </option>
-                          <option>2- Ladies Wears </option>
-                          <option>3- Mens Wears </option>
-                          <option>4- Kids Wears </option>
-                          <option>5- Furnitures </option>
-                          <option>6- Home Appliances </option>
-                          <option>7- Electronics Gadgets </option>
-                        </select>
+                        
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label for="">Product Brand</label>
                         <input type="number" id="brand" style="width: 140px; margin-top: 25px;" name="brand" placeholder="[1-9]" required class="form-control">
-                        <select>
-                          <option >View Option Here</option>
-                          <option>1- HP </option>
-                          <option>2- Samsung </option>
-                          <option>3- Apple </option>
-                          <option>4- Motorola </option>
-                          <option>5- LG </option>
-                          <option>6- Cloth Brand </option>
-                          <option>7- Redmi </option>
-                          <option>8- Realme </option>
-                          <option>9- Nokia </option>
-                        </select>
                       </div>
                     </div>
                      
-                  <br>
+                  
                     <div class="col-md-12">
                       <div class="form-group">
-                        <br>
                         <label>Product Keywords</label>
                         <input type="text" id="tags" name="tags" required class="form-control" >
                       </div>
@@ -157,9 +209,17 @@ include "topheader.php";
             </div>
           </div>
         </div>
+
+
          </form>
+
+
+
+
+
+
         </div>
-      </div>
+      </div> -->
       <?php
 include "footer.php";
 ?>
